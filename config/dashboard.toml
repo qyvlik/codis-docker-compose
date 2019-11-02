@@ -6,7 +6,7 @@
 
 # Set Coordinator, only accept "zookeeper" & "etcd"
 coordinator_name = "zookeeper"
-coordinator_addr = "10.100.5.74:2181"
+coordinator_addr = "zookeeper:2181"
 
 # Set Codis Product {Name/Auth}.
 product_name = "codis-demo"
