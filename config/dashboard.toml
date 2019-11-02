@@ -10,7 +10,7 @@ coordinator_addr = "zookeeper:2181"
 
 # Set Codis Product {Name/Auth}.
 product_name = "codis-demo"
-product_auth = ""
+product_auth = "codis-demo"
 
 # Set bind address for admin(rpc), tcp only.
 admin_addr = "0.0.0.0:18080"
