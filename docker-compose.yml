@@ -30,7 +30,7 @@ services:
     image: qyvlik/codis
     volumes:
       - ${CODIS_LOG_PATH}:/codis/log
-    command: codis-server --logfile log/26379.log
+    command: codis-server --protected-mode no --logfile log/26379.log
     ports:
       - "26379:6379"
 
@@ -38,7 +38,7 @@ services:
     image: qyvlik/codis
     volumes:
       - ${CODIS_LOG_PATH}:/codis/log
-    command: codis-server --logfile log/26380.log
+    command: codis-server --protected-mode no --logfile log/26380.log
     ports:
       - "26380:6379"
 
@@ -46,7 +46,7 @@ services:
     image: qyvlik/codis
     volumes:
       - ${CODIS_LOG_PATH}:/codis/log
-    command: codis-server --logfile log/26381.log
+    command: codis-server --protected-mode no --logfile log/26381.log
     ports:
       - "26381:6379"
 
@@ -54,7 +54,7 @@ services:
     image: qyvlik/codis
     volumes:
       - ${CODIS_LOG_PATH}:/codis/log
-    command: codis-server --logfile log/26382.log
+    command: codis-server --protected-mode no --logfile log/26382.log
     ports:
       - "26382:6379"
 
@@ -62,7 +62,7 @@ services:
     image: qyvlik/codis
     volumes:
       - ${CODIS_LOG_PATH}:/codis/log
-    command: codis-server --logfile log/26383.log
+    command: codis-server --protected-mode no --logfile log/26383.log
     ports:
       - "26383:6379"
 
