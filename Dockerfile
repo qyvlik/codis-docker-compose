@@ -1,9 +1,11 @@
 
 FROM alpine/git as gitclone
 
+ENV CODIS_GIT_TAG release3.2
+
 WORKDIR /src
 
-RUN git clone --depth 1 --branch release3.2 https://github.com/CodisLabs/codis.git
+RUN git clone --depth 1 --branch ${CODIS_GIT_TAG} https://github.com/CodisLabs/codis.git
 
 FROM golang:1.8
 
