@@ -18,9 +18,9 @@ ENV PATH   ${GOPATH}/bin:${PATH}:${CODIS}/bin
 
 COPY --from=gitclone /src/codis/ ${CODIS}
 
-RUN ls -lah ${CODIS}
-
 RUN make -C ${CODIS} distclean
 RUN make -C ${CODIS} build-all
+
+VOLUME /codis/log
 
 WORKDIR /codis
