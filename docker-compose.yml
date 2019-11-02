@@ -1,0 +1,75 @@
+version: '2'
+
+services:
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - "2181:2181"
+
+  codis-dashboard:
+    image: qyvlik/codis
+    volumes:
+      - ./config/dashboard.toml:/codis/dashboard.toml:ro
+      - ${CODIS_DASHBOARD_LOG_PATH}:/codis/log
+    command: codis-dashboard -l log/dashboard.log -c dashboard.toml --host-admin ${MACHINE_HOST_IP}:28080
+    ports:
+      - "28080:18080"
+
+  codis-proxy:
+    image: qyvlik/codis
+    volumes:
+      - ./config/proxy.toml:/codis/proxy.toml:ro
+      - ${CODIS_PROXY_LOG_PATH}:/codis/log
+    command: codis-proxy -l log/proxy.log -c proxy.toml --host-admin ${MACHINE_HOST_IP}:21080 --host-proxy ${MACHINE_HOST_IP}:29000
+    ports:
+      - "29000:19000"
+      - "21080:11080"
+
+  codis-server-26379:
+    image: qyvlik/codis
+    volumes:
+      - ${CODIS_SERVER_LOG_PATH}:/codis/log
+    command: codis-server --logfile log/26379.log
+    ports:
+      - "26379:6379"
+
+  codis-server-26380:
+    image: qyvlik/codis
+    volumes:
+      - ${CODIS_SERVER_LOG_PATH}:/codis/log
+    command: codis-server --logfile log/26380.log
+    ports:
+      - "26380:6379"
+
+  codis-server-26381:
+    image: qyvlik/codis
+    volumes:
+      - ${CODIS_SERVER_LOG_PATH}:/codis/log
+    command: codis-server --logfile log/26381.log
+    ports:
+      - "26381:6379"
+
+  codis-server-26382:
+    image: qyvlik/codis
+    volumes:
+      - ${CODIS_SERVER_LOG_PATH}:/codis/log
+    command: codis-server --logfile log/26382.log
+    ports:
+      - "26382:6379"
+
+  codis-server-26383:
+    image: qyvlik/codis
+    volumes:
+      - ${CODIS_SERVER_LOG_PATH}:/codis/log
+    command: codis-server --logfile log/26383.log
+    ports:
+      - "26383:6379"
+
+  codis-fe:
+    image: qyvlik/codis
+    volumes:
+      - ${CODIS_FE_LOG_PATH}:/codis/log
+    command: codis-fe -l log/fe.log --zookeeper zookeeper:2181 --listen=0.0.0.0:8080 --assets=/gopath/src/github.com/CodisLabs/codis/bin/assets
+    ports:
+      - "8080:8080"
